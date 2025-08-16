@@ -227,7 +227,7 @@ A. 加权方式、残差模型、是否强制过原点等细节不同都会造�
 ```bash
 pip install numpy pandas matplotlib
 ```
-将三个脚本放在同一目录：`urlap_autopipe.py`, `urlap_report_v3.py`, `plot_xrd_before_after_split.py`
+将三个脚本放在同一目录：`urlap_autopipe.py`, `urlap_report_v3.py`, `plot_xrd_before_after_split.py`, `before.csv`
 
 ## 快速开始
 ```bash
