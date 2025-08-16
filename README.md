@@ -1,6 +1,6 @@
-# urlap_report_v3.py 使用说明（XRD 零点补正 + 晶格常数拟合）
+# zero_offset.py 使用说明（XRD 零点补正 + 晶格常数拟合）
 
-`urlap_report_v3.py` 用于把 **用户给定晶系（数字 1–8）** 与 **若干已指数化的峰位 (h k l, 2θ)** 作为输入，完成以下工作：
+`zero_offset.py` 用于把 **用户给定晶系（数字 1–8）** 与 **若干已指数化的峰位 (h k l, 2θ)** 作为输入，完成以下工作：
 
 - 读取 **2θ 原点**（`2THETA ORIGIN = δ`，单位：**度**）并按以下约定显示/计算：  
   - 显示用的 `2THETA_OBS = 原始 OBS − δ`  
@@ -61,7 +61,7 @@ python -V      # 建议 Python 3.8+
 pip install numpy
 ```
 
-将 `urlap_report_v3.py` 放到你的项目或工作目录（也可以加入 CI 任务）。
+将 `zero_offset.py` 放到你的项目或工作目录（也可以加入 CI 任务）。
 
 ---
 
@@ -70,7 +70,7 @@ pip install numpy
 ### 1) 固定 δ，拟合并输出报表
 
 ```bash
-python urlap_report_v3.py \
+python zero_offset.py \
   -i INPUT.TXT \
   --mode fixed \
   --out OUTPUT.txt
@@ -87,7 +87,7 @@ python urlap_report_v3.py \
 ### 2) 扫描 δ（网格点，例如 −0.5…0.5，步长 0.1）
 
 ```bash
-python urlap_report_v3.py \
+python zero_offset.py \
   -i INPUT.TXT \
   --mode scan \
   --delta-range -0.5 0.5 \
