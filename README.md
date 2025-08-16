@@ -206,9 +206,47 @@ A. 加权方式、残差模型、是否强制过原点等细节不同都会造�
 | `--select-by {rms,uncprod}` | 选择最优 δ 的目标函数（默认 `uncprod`） |
 | `--out <path>` | 输出报表路径（默认 `<input>.out.txt`） |
 
+
+
 ---
 
 ## 许可与贡献
+
+
+# urlap_autopipe.py
+
+一键把 **urlap 晶格拟合（自动寻找零点 δ）** 和 **XRD 光谱“零点补正 → 出图 → 导出 CSV”** 串起来。  
+无需手动输入 δ：脚本先调用 `urlap_report_v3.py` 生成报表并解析 `2THETA ORIGIN = ...`，再把该 δ 传给绘图脚本 `plot_xrd_before_after_split.py`。
+
+## 功能
+- 两种模式：`scan`（网格扫描 δ，自动选最佳）/ `fixed`（使用输入或命令行 δ）
+- 零点补正约定：`2θ_after = 2θ_before − δ`（°）
+- 一次性输出：叠加图、分开图（Before/After）、差分（After−Before）、比值（After/Before）+ 对应 CSV
+
+## 依赖与放置
+```bash
+pip install numpy pandas matplotlib
+```
+将三个脚本放在同一目录：`urlap_autopipe.py`, `urlap_report_v3.py`, `plot_xrd_before_after_split.py`
+
+## 快速开始
+```bash
+python urlap_autopipe.py   --peaks LATTICE9.TXT   --spectrum before.csv   --mode scan --delta-range -0.5 0.5 --step 0.1 --select-by uncprod   --xlim 5 90 --compare both --separate --save-csv   --out-prefix sample1
+```
+固定 δ（若 RAW 第 3 行已有 δ 可以省略 `--delta`）：
+```bash
+python urlap_autopipe.py   --peaks TETRA_INPUT.TXT   --spectrum before.csv   --mode fixed   --xlim 5 90 --separate --compare both --save-csv
+```
+
+## 输出
+以 `--out-prefix sample1` 为例：生成 `sample1_urlap.out.txt`，以及 `sample1_before_after.png / _before.png / _after.png / _compare_diff.png / _compare_ratio.png`，和 `sample1_before.csv / _after.csv / _compare.csv`。
+
+## δ 的来源逻辑
+1) `--delta` 2) `--delta-report <REPORT.txt>` 3) CSV 列 `delta_deg_used/delta/origin/twotheta_origin` 4) 同名报告 5) `--delta-default`（0.0）
+（在管线中自动传入 `--delta-report`，无需手工输入 δ）
+
+## 许可证
+MIT（或按项目实际许可证）
 
 欢迎提交 Issue / PR 以完善更多晶系细节、加权策略、细化扫描、**Reciprocal 常数块**输出、补正谱/UMAP 数据导出等功能。
 
