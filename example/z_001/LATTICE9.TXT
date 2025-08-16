@@ -1,0 +1,30 @@
+ TITLE : TITLE Fe(Se0.25Te0.75)0.92 10K                                        
+
+ LATTICE SYSTEM     TETRAGONAL
+
+   WAVE LENGTH =    1.54020     2THETA ORIGIN =   -0.05000
+
+
+        H    K    L   2THETA_OBS   2THETA_CAL    CAL-OBS
+
+        2    0    0   30.6388054   30.6436787   -0.0048733
+        1    0    1   32.0199013   32.0208054   -0.0009041
+        2    2    0   43.8898010   43.8870888    0.0027122
+        2    1    1   44.9118080   44.9105911    0.0012169
+
+
+ RECIPROCAL CELL CONSTANT 
+
+     A*           DA*          B*           DB*          C*            DC*      
+  0.1715626    0.0000120    0.1715626    0.0000120    0.3143855    0.0000436
+
+  ALPHA*       DALPHA*      BETA*        DBETA*      GAMMA        DGAMMA*      
+  90.000000     0.000000    90.000000     0.000000    90.000000     0.000000
+
+ DIRECT CELL CONSTANT 
+
+    A             DA           B            DB           C            DC       
+  5.8287773    0.0004061    5.8287773    0.0004061    3.1808085    0.0004410
+
+  ALPHA        DALPHA       BETA         DBETA       GAMMA        DGAMMA       
+  90.000000     0.000000    90.000000     0.000000    90.000000     0.000000
